@@ -1,5 +1,8 @@
 #pragma once
 #include <memory>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 namespace MeanShift
 {
 	struct WindowInfo {
@@ -15,6 +18,7 @@ namespace MeanShift
 		~Window();
 		void Update();
 		static std::unique_ptr<Window> CreateWindow(const WindowInfo& info = WindowInfo());
-
+	private:
+		GLFWwindow* m_Window = nullptr;
 	};
 }
