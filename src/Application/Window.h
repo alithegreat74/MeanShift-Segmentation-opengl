@@ -2,6 +2,10 @@
 #include <memory>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Rendering/Buffers.h"
+#include <iostream>
+#include "Rendering/Shader.h"
+#include "Rendering/Texture.h"
 
 namespace MeanShift
 {
@@ -20,5 +24,9 @@ namespace MeanShift
 		static std::unique_ptr<Window> CreateWindow(const WindowInfo& info = WindowInfo());
 	private:
 		GLFWwindow* m_Window = nullptr;
+		std::shared_ptr<ArrayBuffer> m_ArrayBuffer;
+		std::shared_ptr<ShaderProgram> m_QuadProgram;
+		std::shared_ptr<Texture> m_QuadTexture;
 	};
+
 }
