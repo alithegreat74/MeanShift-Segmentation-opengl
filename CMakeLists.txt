@@ -13,10 +13,21 @@ include_directories(
     "${CMAKE_SOURCE_DIR}/Thirdparty/glfw/include"
     "${CMAKE_SOURCE_DIR}/Thirdparty/glad/include"
     "${CMAKE_SOURCE_DIR}/Thirdparty/stb_image"
+    "${CMAKE_SOURCE_DIR}/Thirdparty/imgui"
 )
 
 # Source files
 file(GLOB_RECURSE SRC_FILES "${CMAKE_SOURCE_DIR}/src/*.cpp" "${CMAKE_SOURCE_DIR}/src/*.h")
+file(GLOB IMGUI_FILES 
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/*.cpp"
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/*.h"
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/backends/imgui_impl_opengl3.cpp"
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/backends/imgui_impl_opengl3.h"
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/backends/imgui_impl_glfw.h"
+"${CMAKE_SOURCE_DIR}/Thirdparty/imgui/backends/imgui_impl_glfw.cpp"
+
+)
+
 
 # Add third-party dependencies
 add_subdirectory("${CMAKE_SOURCE_DIR}/Thirdparty/glfw")
@@ -24,7 +35,7 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/Thirdparty/glad")
 add_subdirectory("${CMAKE_SOURCE_DIR}/Thirdparty/stb_image")
 
 # Add executable
-add_executable(MeanShift "${SRC_FILES}")
+add_executable(MeanShift "${SRC_FILES}" ${IMGUI_FILES})
 
 # Link libraries
 target_link_libraries(MeanShift glfw glad stb_image)
