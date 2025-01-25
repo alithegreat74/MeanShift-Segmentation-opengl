@@ -1,6 +1,7 @@
 #include "Buffers.h"
 #include <glad/glad.h>
-
+#include <cassert>
+#include <iostream>
 namespace MeanShift {
 	
 
@@ -45,5 +46,27 @@ namespace MeanShift {
 	void ArrayBuffer::Unbind()
 	{
 		glBindVertexArray(0);
+	}
+	FrameBuffer::FrameBuffer()
+	{
+		glGenFramebuffers(1, &m_RendererId);
+	}
+	FrameBuffer::~FrameBuffer()
+	{
+		glDeleteFramebuffers(1, &m_RendererId);
+	}
+	void FrameBuffer::AttachTexture(const Texture& texture) const
+	{
+		Bind();
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture.GetId() , 0);
+		Unbind();
+	}
+	void FrameBuffer::Bind() const
+	{
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererId);
+	}
+	void FrameBuffer::Unbind() const
+	{
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 }

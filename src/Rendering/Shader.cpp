@@ -56,10 +56,25 @@ namespace MeanShift{
 	void ShaderProgram::InitializeProgram(const Shader& vertexShader, const Shader& fragmentShder)
 	{
 		m_RendererId = glCreateProgram();
-		glAttachShader(m_RendererId, vertexShader.GetId());
-		glAttachShader(m_RendererId, fragmentShder.GetId());
+		glAttachShader(m_RendererId, vertexShader);
+		glAttachShader(m_RendererId, fragmentShder);
 		glLinkProgram(m_RendererId);
 		ValidateProgram();
+	}
+	void ShaderProgram::SetUniform(const char* uniformName, int value)
+	{
+		uint32_t location = glGetUniformLocation(m_RendererId, uniformName);
+		glUniform1i(location, value);
+	}
+	void ShaderProgram::SetUniform(const char* uniformName, float value)
+	{
+		uint32_t location = glGetUniformLocation(m_RendererId, uniformName);
+		glUniform1f(location, value);
+	}
+	void ShaderProgram::SetUniform(const char* uniformName, float value1, float value2)
+	{
+		uint32_t location = glGetUniformLocation(m_RendererId, uniformName);
+		glUniform2f(location, value1,value2);
 	}
 	void ShaderProgram::Bind()
 	{

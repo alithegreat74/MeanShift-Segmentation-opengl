@@ -1,7 +1,12 @@
 #include "UserInterface.h"
 
+/// <summary>
+/// This is a copied from imgui examples for setting up the imgui frame and rendering
+/// for more information visit the imgui example for glfw opengl
+/// </summary>
+
 namespace MeanShift {
-	namespace UserInterface {
+	namespace ImGuiLayer {
 		void Initialize(GLFWwindow* window)
 		{
 			IMGUI_CHECKVERSION();

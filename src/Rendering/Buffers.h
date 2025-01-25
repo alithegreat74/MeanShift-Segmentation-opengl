@@ -1,5 +1,7 @@
 #pragma once
 #include <stdint.h>
+#include "Texture.h"
+
 namespace MeanShift {
 
 	constexpr float QUAD_VERTICIES[] = {
@@ -34,6 +36,13 @@ namespace MeanShift {
 
 	class FrameBuffer
 	{
-
+	public:
+		FrameBuffer();
+		~FrameBuffer();
+		void AttachTexture(const Texture& texture)const;
+		void Bind()const;
+		void Unbind()const;
+	private:
+		uint32_t m_RendererId;
 	};
 } 

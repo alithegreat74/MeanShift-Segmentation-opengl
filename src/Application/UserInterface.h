@@ -5,7 +5,7 @@
 #include <backends/imgui_impl_opengl3.h>
 
 namespace MeanShift {
-	namespace UserInterface {
+	namespace ImGuiLayer {
 		void Initialize(GLFWwindow* window);
 		void BeginFrame();
 		void EndFrame();
