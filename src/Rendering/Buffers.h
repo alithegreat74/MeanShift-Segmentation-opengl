@@ -23,11 +23,11 @@ namespace MeanShift {
 		 uint32_t m_RendererId;
 	};
 
-	class ArrayBuffer
+	class VertexArray
 	{
 	public:
-		ArrayBuffer();
-		~ArrayBuffer();
+		VertexArray();
+		~VertexArray();
 		void Bind();
 		void Unbind();
 	private:

@@ -23,7 +23,7 @@ namespace MeanShift {
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
-	ArrayBuffer::ArrayBuffer()
+	VertexArray::VertexArray()
 	{
 		glCreateVertexArrays(1, &m_RendererId);
 		Bind();
@@ -35,15 +35,15 @@ namespace MeanShift {
 		vbo.Unbind();
 		Unbind();
 	}
-	ArrayBuffer::~ArrayBuffer()
+	VertexArray::~VertexArray()
 	{
 		glDeleteVertexArrays(1, &m_RendererId);
 	}
-	void ArrayBuffer::Bind()
+	void VertexArray::Bind()
 	{
 		glBindVertexArray(m_RendererId);
 	}
-	void ArrayBuffer::Unbind()
+	void VertexArray::Unbind()
 	{
 		glBindVertexArray(0);
 	}

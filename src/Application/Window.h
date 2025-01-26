@@ -25,6 +25,8 @@ namespace MeanShift
 		};
 		float KernelRadius = 5.0f;
 		float ColorWeight = 50.0f;
+		float SpatialWeight = 5.0f;
+		int MaxIterations = 5;
 	};
 
 	class Window {
@@ -35,7 +37,8 @@ namespace MeanShift
 		static std::unique_ptr<Window> CreateWindow(const WindowInfo& info = WindowInfo());
 	private:
 		GLFWwindow* m_Window = nullptr;
-		std::unique_ptr<ArrayBuffer> m_ArrayBuffer;
+		//It's important to allocate the opengl related class instances on the heap so we can control it's lifetime
+		std::unique_ptr<VertexArray> m_VertexArray;
 		std::unique_ptr<ShaderProgram> m_MeanShiftProgram;
 		std::unique_ptr<ShaderProgram> m_NormalTextureDisplayProgram;
 		std::unique_ptr<Texture> m_InputTexture;
