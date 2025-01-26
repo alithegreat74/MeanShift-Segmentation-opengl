@@ -32,7 +32,6 @@ namespace MeanShift {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		TextureLoader::UnloadTexture(textureInfo.data);
-		Unbind();
 	}
 	// In Texture.cpp
 	Texture::Texture(int width, int height, int nChannels)
@@ -48,6 +47,9 @@ namespace MeanShift {
 		// Create empty texture with proper dimensions
 		glTexImage2D(GL_TEXTURE_2D, 0, format, m_Width, m_Height, 0,
 			format, GL_UNSIGNED_BYTE, nullptr);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		Unbind();
 	}

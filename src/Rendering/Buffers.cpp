@@ -59,13 +59,14 @@ namespace MeanShift {
 	{
 		Bind();
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture.GetId() , 0);
+		assert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE && "Frame Buffer not attached");
 		Unbind();
 	}
 	void FrameBuffer::Bind() const
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererId);
 	}
-	void FrameBuffer::Unbind() const
+	void FrameBuffer::Unbind()
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}

@@ -39,9 +39,10 @@ namespace MeanShift {
 	public:
 		FrameBuffer();
 		~FrameBuffer();
+
 		void AttachTexture(const Texture& texture)const;
 		void Bind()const;
-		void Unbind()const;
+		static void Unbind();
 	private:
 		uint32_t m_RendererId;
 	};
